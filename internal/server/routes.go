@@ -3,6 +3,7 @@ package server
 import (
 	"net/http"
 
+	"food-receipe-back/internal/auth"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
@@ -17,9 +18,11 @@ func (s *Server) RegisterRoutes() http.Handler {
 		AllowCredentials: true, // Enable cookies/auth
 	}))
 
-	r.GET("/", s.HelloWorldHandler)
-	r.GET("/login", s.Login)
-	r.GET("/signup", s.Signup)
+	// r.GET("/", s.HelloWorldHandler)
+	// r.POST("/signup", s.Signup)
+	//
+	r.POST("/login", auth.LoginHandler)
+	// r.POST("/refresh", auth.RefreshHandler)
 
 	r.GET("/health", s.healthHandler)
 

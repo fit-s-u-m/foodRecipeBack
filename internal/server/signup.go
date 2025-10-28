@@ -8,6 +8,10 @@ import (
 
 func (s *Server) Signup(c *gin.Context) {
 	resp := make(map[string]string)
-	resp["message"] = "Sign up"
+	resp["email"] = "fitsumwondessen@gmail.com"
+	resp["id"] = "10"
+	resp["username"] = "keya"
+	resp["accessToken"] = "accessToken"
+	resp["refreshToken"] = "refreshToken"
 	c.JSON(http.StatusOK, resp)
 }
