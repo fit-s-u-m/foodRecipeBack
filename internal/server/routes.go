@@ -18,11 +18,10 @@ func (s *Server) RegisterRoutes() http.Handler {
 		AllowCredentials: true, // Enable cookies/auth
 	}))
 
-	// r.GET("/", s.HelloWorldHandler)
-	// r.POST("/signup", s.Signup)
-	//
+	r.GET("/", s.HelloWorldHandler)
+	r.POST("/signup", auth.SignupHandler)
 	r.POST("/login", auth.LoginHandler)
-	// r.POST("/refresh", auth.RefreshHandler)
+	r.POST("/refresh", auth.RefreshHandler)
 
 	r.GET("/health", s.healthHandler)
 
