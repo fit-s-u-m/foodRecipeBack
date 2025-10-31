@@ -43,7 +43,7 @@ func GenerateTokens(userID string) (accessToken string, refreshToken string, err
 // Verify access token
 func VerifyAccessToken(tokenStr string) (*Claims, error) {
 	claims := &Claims{}
-	token, err := jwt.ParseWithClaims(tokenStr, claims, func(token *jwt.Token) (interface{}, error) {
+	token, err := jwt.ParseWithClaims(tokenStr, claims, func(token *jwt.Token) (any, error) {
 		return accessSecret, nil
 	})
 	if err != nil || !token.Valid {
@@ -55,7 +55,7 @@ func VerifyAccessToken(tokenStr string) (*Claims, error) {
 // Verify refresh token
 func VerifyRefreshToken(tokenStr string) (*Claims, error) {
 	claims := &Claims{}
-	token, err := jwt.ParseWithClaims(tokenStr, claims, func(token *jwt.Token) (interface{}, error) {
+	token, err := jwt.ParseWithClaims(tokenStr, claims, func(token *jwt.Token) (any, error) {
 		return refreshSecret, nil
 	})
 	if err != nil || !token.Valid {
